@@ -1,28 +1,12 @@
 class Room
 
-  attr_accessor :room_number, :room_type, :price, :status
+  attr_accessor :room_number, :type, :price, :status
 
-  def initialize(room_number, room_type, price, status)
-    @room_number = room_number
-    @room_type = room_type
-    @price = price
-    @status = status
-  end
-
-  # def number_of_rooms()
-  #   return rooms.length
-  # end
-
-  def room_number
-    return @room_number
-  end
-
-  def room_type
-    return @room_type
-  end
-
-  def room_price
-    return @price
+  def initialize( params)
+    @room_number = params[:room_number]
+    @type = params[:type]
+    @price = params[:price]
+    @status = params[:status]
   end
 
   def get_room_number_and_price
@@ -33,8 +17,11 @@ class Room
     return room_number_result + price_result
   end
 
-  def check_room_status
-    return @status
+  def check_available_rooms()
+   if @status == "available"
+    return @room_number
+  else false #for the moment i've got it returning false if the room is booked, for testings sake.. but in the running version of the program I will have it saying "room not available" or "already booked"
+  end
   end
 
 end

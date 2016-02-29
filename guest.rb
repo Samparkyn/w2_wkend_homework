@@ -1,14 +1,20 @@
 class Guest
 
-  attr_accessor :guest_name, :reservation
+  attr_accessor :name, :booking
 
-  def initialize(guest_name)
-    @guest_name = guest_name
-    @reservation = []
+  def initialize(params)
+    @name = params[:name]
+    @booking = params[:booking]
   end
 
-  def guest_name
-    return @guest_name
-  end
+def has_booking
+  reservation = []
+  result = @name + " " + @booking
+  if @booking == "booked"
+  reservation << result
+else return "you have no booking"
+end
+  return result
+end
 
 end
